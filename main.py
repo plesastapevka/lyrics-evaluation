@@ -5,11 +5,17 @@ import t2e
 
 
 def pre_process_text(text):
-    # clean_text = re.sub(r"\[[^<]+]|((^|\s+)[ me | im | is | I'm | your | you | and | in | yeah | i | ay | aye | at | to | the | a]+(\s+|$))", " ", text.lower())
-    # clean_text = re.sub(r"\[[^<]+]", " ", text.lower())
-    clean_text = re.sub(r"\[[^<]+]|((^|\s+)[ yeah | ay | aye | uh | ugh | argh | na ]+(\s+|$))", " ", text.lower())
+    clean_text = re.sub(r"\[[^<]+]", " ", text.lower())
     raw_text = re.sub(r'[^A-Za-zČčŠšŽžĐđäöüßÄÖÜẞ. ]', '', clean_text)
-    return raw_text
+
+    # stopwords = ["i", "you", "and", "the", "im", "ima", "yeah", "ay", "oh", "aye", "uh", "ugh", "uhh", "argh", "rrr",
+    # "na", "ooh", "ohh", "me", "a", "to", "in", "your"]
+    stopwords = ["yeah", "ay", "oh", "aye", "uh", "ugh", "uhh", "argh", "rrr", "na", "ooh", "ohh", "a"]
+    processed_text = raw_text.split()
+
+    resultwords = [word for word in processed_text if word not in stopwords]
+    result = ' '.join(resultwords)
+    return result
 
 
 def create_n_grams(text, n=3):
@@ -49,6 +55,13 @@ def build_model(path, write=False):
         'fourgrams': dict(fourgram_freq[:300]),
         'fivegrams': dict(fivegram_freq[:300])
     }
+    # profile = {
+    #     'unigrams': dict(unigram_freq),
+    #     'bigrams': dict(bigram_freq),
+    #     'trigrams': dict(trigram_freq),
+    #     'fourgrams': dict(fourgram_freq),
+    #     'fivegrams': dict(fivegram_freq)
+    # }
     if write:
         try:
             outfile = open("learning_profiles/profile.json", "w")
@@ -70,18 +83,18 @@ def ngrams(s, n=2, i=0):
         i += 1
 
 
-def get_diff(ngram, element, idx):
+def get_diff(ngram, element, idx, err_val):
     try:
         index = ngram.index(element)
         return abs(index - idx)
     except ValueError:
-        return len(ngram)
+        return err_val
 
 
 def process_ngram(new_ngram, ngram):
     ngram_sum = 0
-    for idx, e in enumerate(new_ngram):
-        diff = get_diff(ngram, e, idx)
+    for idx, e in enumerate(ngram):
+        diff = get_diff(new_ngram, e, idx, len(ngram))
         if diff != -1:
             ngram_sum += diff
     return ngram_sum
@@ -118,7 +131,7 @@ def calculate(new_profile, path="learning_profiles/profile.json"):
     ngram_sum += process_ngram(bi_new, bi)
     ngram_sum += process_ngram(tri_new, tri)
     ngram_sum += process_ngram(four_new, four)
-    ngram_sum += process_ngram(five_new, five)
+    # ngram_sum += process_ngram(five_new, five)
 
     return ngram_sum
 
@@ -146,11 +159,11 @@ def main():
             exit(1)
 
         for s in test_data["lyrics"]:
-            t2e_results = text2emotion(s["path"])
+            # t2e_results = text2emotion(s["path"])
             profile = build_model(s["path"])
             print("\n" + s["artist"] + " - " + s["title"])
             print("Own value: " + str(calculate(new_profile=profile)))
-            print("T2E value: " + str(t2e_results["Angry"]))
+            # print("T2E value: " + str(t2e_results["Angry"]))
 
 
 if __name__ == "__main__":

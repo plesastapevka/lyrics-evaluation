@@ -26,6 +26,16 @@
       "path": "test_lyrics/mobb_deep_shook_ones.txt"
     },
     {
+      "artist": "Juice WRLD",
+      "title": "Lucid Dreams",
+      "path": "test_lyrics/juice_wrld_lucid_dreams.txt"
+    },
+    {
+      "artist": "Travis Scott",
+      "title": "goosebumps",
+      "path": "test_lyrics/travis_scott_goosebumps.txt"
+    },
+    {
       "artist": "Guns 'N' Roses",
       "title": "Sweet Child O' Mine",
       "path": "test_lyrics/gnr_sweet_child.txt"
