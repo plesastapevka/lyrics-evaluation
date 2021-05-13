@@ -1,6 +1,7 @@
 import collections
 import re
 import json
+import t2e
 
 
 def pre_process_text(text):
@@ -113,7 +114,7 @@ def calculate(new_profile, path="learning_profiles/profile.json"):
     ngram_sum = 0
 
     # ngrams processing
-    # ngram_sum += process_ngram(uni_new, uni)
+    ngram_sum += process_ngram(uni_new, uni)
     ngram_sum += process_ngram(bi_new, bi)
     ngram_sum += process_ngram(tri_new, tri)
     ngram_sum += process_ngram(four_new, four)
@@ -122,31 +123,34 @@ def calculate(new_profile, path="learning_profiles/profile.json"):
     return ngram_sum
 
 
+def text2emotion(path):
+    try:
+        infile = open(path, "r")
+        data = infile.read()
+    except IOError:
+        print("Cannot open file")
+        exit(1)
+    return t2e.calculate_emotion(data)
+
+
 def main():
     create_model = False
     if create_model:
         build_model(path="learning_profiles/hiphoplyrics.txt", write=True)
     else:
-        profile = build_model(path="test_lyrics/jcole_middle_child.txt")
-        print("J. Cole - Middle Child: " + str(calculate(new_profile=profile)))
+        try:
+            infile = open("test_data.json", "r")
+            test_data = json.load(infile)
+        except IOError:
+            print("Cannot open file")
+            exit(1)
 
-        profile = build_model(path="test_lyrics/eminem_kim.txt")
-        print("Eminem - Kim: " + str(calculate(new_profile=profile)))
-
-        profile = build_model(path="test_lyrics/melvoni_no_mans_land.txt")
-        print("Melvoni - No Man's Land: " + str(calculate(new_profile=profile)))
-
-        profile = build_model(path="test_lyrics/kid_cudi_day_n_nite.txt")
-        print("Kid Cudi - Day 'n' Nite: " + str(calculate(new_profile=profile)))
-
-        profile = build_model(path="test_lyrics/mobb_deep_shook_ones.txt")
-        print("Mobb Deep - Shook Ones, Part II: " + str(calculate(new_profile=profile)))
-
-        profile = build_model(path="test_lyrics/passenger_let_her_go.txt")
-        print("Passenger - Let Her Go: " + str(calculate(new_profile=profile)))
-
-        profile = build_model(path="test_lyrics/gnr_sweet_child.txt")
-        print("Guns N' Roses - Sweet Child O' Mine: " + str(calculate(new_profile=profile)))
+        for s in test_data["lyrics"]:
+            t2e_results = text2emotion(s["path"])
+            profile = build_model(s["path"])
+            print("\n" + s["artist"] + " - " + s["title"])
+            print("Own value: " + str(calculate(new_profile=profile)))
+            print("T2E value: " + str(t2e_results["Angry"]))
 
 
 if __name__ == "__main__":

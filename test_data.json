@@ -1,0 +1,39 @@
+{
+  "lyrics": [
+    {
+      "artist": "Eminem",
+      "title": "Kim",
+      "path": "test_lyrics/eminem_kim.txt"
+    },
+    {
+      "artist": "J. Cole",
+      "title": "Middle Child",
+      "path": "test_lyrics/jcole_middle_child.txt"
+    },
+    {
+      "artist": "Kid Cudi",
+      "title": "Day 'n' Nite",
+      "path": "test_lyrics/kid_cudi_day_n_nite.txt"
+    },
+    {
+      "artist": "Melvoni",
+      "title": "No Man's Land",
+      "path": "test_lyrics/melvoni_no_mans_land.txt"
+    },
+    {
+      "artist": "Mobb Deep",
+      "title": "Shook Ones, Part II",
+      "path": "test_lyrics/mobb_deep_shook_ones.txt"
+    },
+    {
+      "artist": "Guns 'N' Roses",
+      "title": "Sweet Child O' Mine",
+      "path": "test_lyrics/gnr_sweet_child.txt"
+    },
+    {
+      "artist": "Passenger",
+      "title": "Let Her Go",
+      "path": "test_lyrics/passenger_let_her_go.txt"
+    }
+  ]
+}
