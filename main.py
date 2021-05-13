@@ -2,6 +2,7 @@ import collections
 import re
 import json
 import t2e
+import time
 
 
 def pre_process_text(text):
@@ -148,6 +149,7 @@ def text2emotion(path):
 
 def main():
     create_model = False
+    write = True
     if create_model:
         build_model(path="learning_profiles/hiphoplyrics.txt", write=True)
     else:
@@ -157,14 +159,33 @@ def main():
         except IOError:
             print("Cannot open file")
             exit(1)
+        if write:
+            results = open("results.txt", "w")
+            results_time = open("results_time.txt", "w")
 
         for s in test_data["lyrics"]:
-            # t2e_results = text2emotion(s["path"])
-            profile = build_model(s["path"])
-            print("\n" + s["artist"] + " - " + s["title"])
-            print("Own value: " + str(calculate(new_profile=profile)))
-            # print("T2E value: " + str(t2e_results["Angry"]))
+            start = round(time.time() * 1000)
+            t2e_results = text2emotion(s["path"])
+            end = round(time.time() * 1000)
+            t2e_elapsed = end - start
 
+            start = round(time.time() * 1000)
+            profile = build_model(s["path"])
+            own_results = calculate(new_profile=profile)
+            end = round(time.time() * 1000)
+            own_elapsed = end - start
+
+            print("\n" + s["artist"] + " - " + s["title"])
+            print("Own value: " + str(own_results) + " in " + str(own_elapsed) + " ms")
+            print("T2E value: " + str(t2e_results["Angry"]) + " in " + str(t2e_elapsed) + " ms")
+
+            if write:
+                results.write(s["artist"] + " - " + s["title"] + ": " + str(own_results) + " " + str(t2e_results["Angry"]) + "\n")
+                results_time.write(s["artist"] + " - " + s["title"] + ": " + str(own_elapsed) + " " + str(t2e_elapsed) + "\n")
+
+        if write:
+            results.close()
+            results_time.close()
 
 if __name__ == "__main__":
     main()
