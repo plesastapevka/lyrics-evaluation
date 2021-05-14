@@ -163,6 +163,9 @@ def main():
             results = open("results.txt", "w")
             results_time = open("results_time.txt", "w")
 
+            results.write(r"Pesem & T2E & Lastna impl. \\\hline" + "\n")
+            results_time.write(r"Pesem & T2E & Lastna impl. \\\hline" + "\n")
+
         for s in test_data["lyrics"]:
             start = round(time.time() * 1000)
             t2e_results = text2emotion(s["path"])
@@ -180,12 +183,13 @@ def main():
             print("T2E value: " + str(t2e_results["Angry"]) + " in " + str(t2e_elapsed) + " ms")
 
             if write:
-                results.write(s["artist"] + " - " + s["title"] + ": " + str(own_results) + " " + str(t2e_results["Angry"]) + "\n")
-                results_time.write(s["artist"] + " - " + s["title"] + ": " + str(own_elapsed) + " " + str(t2e_elapsed) + "\n")
+                results.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_results) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
+                results_time.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_elapsed) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
 
         if write:
             results.close()
             results_time.close()
+
 
 if __name__ == "__main__":
     main()
