@@ -1,4 +1,4 @@
-Pesem & T2E & Lastna impl. \\\hline
+Pesem & Lastna impl. & T2E \\\hline
 Eminem\\Kim & 308460 & 0.08\\\hline
 J. Cole\\Middle Child & 328353 & 0.12\\\hline
 Kid Cudi\\Day 'n' Nite & 343726 & 0.02\\\hline

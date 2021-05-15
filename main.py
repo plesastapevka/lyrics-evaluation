@@ -163,8 +163,8 @@ def main():
             results = open("results.txt", "w")
             results_time = open("results_time.txt", "w")
 
-            results.write(r"Pesem & T2E & Lastna impl. \\\hline" + "\n")
-            results_time.write(r"Pesem & T2E & Lastna impl. \\\hline" + "\n")
+            results.write(r"Pesem & Lastna impl. & T2E \\\hline" + "\n")
+            results_time.write(r"Pesem & Lastna impl. & T2E & \\\hline" + "\n")
 
         for s in test_data["lyrics"]:
             start = round(time.time() * 1000)
