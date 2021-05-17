@@ -3,7 +3,7 @@ import re
 import json
 import t2e
 import time
-
+from lyrics_extractor import SongLyrics
 
 def pre_process_text(text):
     clean_text = re.sub(r"\[[^<]+]", " ", text.lower())
@@ -26,16 +26,19 @@ def create_n_grams(text, n=3):
     return [i[0] for i in ngrams_map]
 
 
-def build_model(path, write=False):
-    # Read lyrics from file
+def build_model_path(path):
     try:
         infile = open(path, "r")
         data = infile.read().replace('\n', ' ')
     except IOError:
         print("File does not exist")
         exit(1)
-
+    
     infile.close()
+    build_model(path)
+
+def build_model(data, write=False):
+    # Read lyrics from file
     raw_text = pre_process_text(data)
     words_array = raw_text.split()
     unigram = list(ngrams(words_array, n=1))
@@ -147,11 +150,40 @@ def text2emotion(path):
     return t2e.calculate_emotion(data)
 
 
+def text2emotion_data(data):
+    return t2e.calculate_emotion(data)
+
 def main():
     create_model = False
+    get_lyrics = True
     write = True
     if create_model:
-        build_model(path="learning_profiles/hiphoplyrics.txt", write=True)
+        if get_lyrics:
+            extract_lyrics = SongLyrics("AIzaSyDqKiRUEY58zJ6rXIGb9vo7NY6G1vuNf90", "13133a888d06ff0f6")
+            val = input("Enter a song: ")
+            data = extract_lyrics.get_lyrics(val)
+            with open("learning_profiles/hiphoplyrics.txt", "a") as myfile:
+                myfile.write(data["lyrics"])
+        build_model(path="learning_profiles/hiphoplyrics.txt", write=True) 
+    elif get_lyrics:
+        extract_lyrics = SongLyrics("AIzaSyDqKiRUEY58zJ6rXIGb9vo7NY6G1vuNf90", "13133a888d06ff0f6")
+        val = input("Enter a song: ")
+        s = extract_lyrics.get_lyrics(val)
+
+        start = round(time.time() * 1000)
+        t2e_results = text2emotion_data(s["lyrics"])
+        end = round(time.time() * 1000)
+        t2e_elapsed = end - start
+
+        start = round(time.time() * 1000)
+        profile = build_model(s["lyrics"])
+        own_results = calculate(new_profile=profile)
+        end = round(time.time() * 1000)
+        own_elapsed = end - start
+
+        print("\n" + s["title"])
+        print("Own value: " + str(own_results) + " in " + str(own_elapsed) + " ms")
+        print("T2E value: " + str(t2e_results["Angry"]) + " in " + str(t2e_elapsed) + " ms")
     else:
         try:
             infile = open("test_data.json", "r")
@@ -173,7 +205,7 @@ def main():
             t2e_elapsed = end - start
 
             start = round(time.time() * 1000)
-            profile = build_model(s["path"])
+            profile = build_model_path(s["path"])
             own_results = calculate(new_profile=profile)
             end = round(time.time() * 1000)
             own_elapsed = end - start
@@ -192,4 +224,5 @@ def main():
 
 
 if __name__ == "__main__":
+    
     main()

@@ -1,10 +1,10 @@
 Pesem & Lastna impl. & T2E & \\\hline
-Eminem\\Kim & 11 & 5662\\\hline
-J. Cole\\Middle Child & 10 & 3213\\\hline
-Kid Cudi\\Day 'n' Nite & 7 & 3139\\\hline
-Melvoni\\No Man's Land & 8 & 4077\\\hline
-Mobb Deep\\Shook Ones, Part II & 14 & 4308\\\hline
-Juice WRLD\\Lucid Dreams & 7 & 3048\\\hline
-Travis Scott\\goosebumps & 9 & 3112\\\hline
-Guns 'N' Roses\\Sweet Child O' Mine & 4 & 1348\\\hline
-Passenger\\Let Her Go & 6 & 1776\\\hline
+Eminem\\Kim & 11 & 5305\\\hline
+J. Cole\\Middle Child & 10 & 3526\\\hline
+Kid Cudi\\Day 'n' Nite & 8 & 3055\\\hline
+Melvoni\\No Man's Land & 9 & 3173\\\hline
+Mobb Deep\\Shook Ones, Part II & 10 & 3877\\\hline
+Juice WRLD\\Lucid Dreams & 7 & 2352\\\hline
+Travis Scott\\goosebumps & 8 & 2692\\\hline
+Guns 'N' Roses\\Sweet Child O' Mine & 5 & 1331\\\hline
+Passenger\\Let Her Go & 5 & 1682\\\hline
