@@ -3,7 +3,8 @@ import re
 import json
 import t2e
 import time
-from lyrics_extractor import SongLyrics
+# from lyrics_extractor import SongLyrics
+
 
 def pre_process_text(text):
     clean_text = re.sub(r"\[[^<]+]", " ", text.lower())
@@ -19,14 +20,14 @@ def pre_process_text(text):
     return result
 
 
-def create_n_grams(text, n=3):
+def character_ngrams(text, n=3):
     n_grams = [text[i:i + n] for i in range(len(text) - n + 1)]
     ngrams_freq = collections.Counter(n_grams)
     ngrams_map = ngrams_freq.most_common()
-    return [i[0] for i in ngrams_map]
+    return ngrams_map
 
 
-def build_model_path(path):
+def build_model_path(path, write=False):
     try:
         infile = open(path, "r")
         data = infile.read().replace('\n', ' ')
@@ -35,37 +36,51 @@ def build_model_path(path):
         exit(1)
     
     infile.close()
-    build_model(path)
+    return build_model(data, write=write)
+
 
 def build_model(data, write=False):
     # Read lyrics from file
     raw_text = pre_process_text(data)
-    words_array = raw_text.split()
-    unigram = list(ngrams(words_array, n=1))
-    bigram = list(ngrams(words_array, n=2))
-    trigram = list(ngrams(words_array, n=3))
-    fourgram = list(ngrams(words_array, n=4))
-    fivegram = list(ngrams(words_array, n=5))
 
-    unigram_freq = collections.Counter(unigram).most_common()
-    bigram_freq = collections.Counter(bigram).most_common()
-    trigram_freq = collections.Counter(trigram).most_common()
-    fourgram_freq = collections.Counter(fourgram).most_common()
-    fivegram_freq = collections.Counter(fivegram).most_common()
+    # Word ngrams
+    words_array = raw_text.split()
+    w_unigram = list(ngrams(words_array, n=1))
+    w_bigram = list(ngrams(words_array, n=2))
+    w_trigram = list(ngrams(words_array, n=3))
+    w_fourgram = list(ngrams(words_array, n=4))
+    w_fivegram = list(ngrams(words_array, n=5))
+
+    w_unigram_freq = collections.Counter(w_unigram).most_common()
+    w_bigram_freq = collections.Counter(w_bigram).most_common()
+    w_trigram_freq = collections.Counter(w_trigram).most_common()
+    w_fourgram_freq = collections.Counter(w_fourgram).most_common()
+    w_fivegram_freq = collections.Counter(w_fivegram).most_common()
+
+    # Character ngrams
+    c_unigram_freq = character_ngrams(raw_text, 1)
+    c_bigram_freq = character_ngrams(raw_text, 2)
+    c_trigram_freq = character_ngrams(raw_text, 3)
+    c_fourgram_freq = character_ngrams(raw_text, 4)
+    c_fivegram_freq = character_ngrams(raw_text, 5)
+
     profile = {
-        'unigrams': dict(unigram_freq[:300]),
-        'bigrams': dict(bigram_freq[:300]),
-        'trigrams': dict(trigram_freq[:300]),
-        'fourgrams': dict(fourgram_freq[:300]),
-        'fivegrams': dict(fivegram_freq[:300])
+        'word_ngrams': {
+            'unigrams': dict(w_unigram_freq[:300]),
+            'bigrams': dict(w_bigram_freq[:300]),
+            'trigrams': dict(w_trigram_freq[:300]),
+            'fourgrams': dict(w_fourgram_freq[:300]),
+            'fivegrams': dict(w_fivegram_freq[:300])
+        },
+        'char_ngrams': {
+            'unigrams': dict(c_unigram_freq[:300]),
+            'bigrams': dict(c_bigram_freq[:300]),
+            'trigrams': dict(c_trigram_freq[:300]),
+            'fourgrams': dict(c_fourgram_freq[:300]),
+            'fivegrams': dict(c_fivegram_freq[:300])
+        }
     }
-    # profile = {
-    #     'unigrams': dict(unigram_freq),
-    #     'bigrams': dict(bigram_freq),
-    #     'trigrams': dict(trigram_freq),
-    #     'fourgrams': dict(fourgram_freq),
-    #     'fivegrams': dict(fivegram_freq)
-    # }
+
     if write:
         try:
             outfile = open("learning_profiles/profile.json", "w")
@@ -104,16 +119,7 @@ def process_ngram(new_ngram, ngram):
     return ngram_sum
 
 
-def calculate(new_profile, path="learning_profiles/profile.json"):
-    try:
-        infile = open(path, "r")
-        profile = json.load(infile)
-    except IOError:
-        print("Cannot open file")
-        exit(1)
-
-    infile.close()
-
+def get_ngram_value(profile, new_profile):
     # test profiles
     uni_new = list(new_profile["unigrams"].keys())
     bi_new = list(new_profile["bigrams"].keys())
@@ -140,6 +146,24 @@ def calculate(new_profile, path="learning_profiles/profile.json"):
     return ngram_sum
 
 
+def calculate(new_profile, path="learning_profiles/profile.json", word_ngrams=True):
+    try:
+        infile = open(path, "r")
+        profile = json.load(infile)
+    except IOError:
+        print("Cannot open file")
+        exit(1)
+
+    infile.close()
+
+    if word_ngrams:
+        ngram_sum = (1 - (get_ngram_value(profile["word_ngrams"], new_profile["word_ngrams"]) / 360000)) * 100
+    else:
+        ngram_sum = (1 - (get_ngram_value(profile["char_ngrams"], new_profile["char_ngrams"]) / 270784)) * 100
+
+    return round(ngram_sum, 2)
+
+
 def text2emotion(path):
     try:
         infile = open(path, "r")
@@ -153,9 +177,10 @@ def text2emotion(path):
 def text2emotion_data(data):
     return t2e.calculate_emotion(data)
 
+
 def main():
     create_model = False
-    get_lyrics = True
+    get_lyrics = False
     write = True
     if create_model:
         if get_lyrics:
@@ -164,7 +189,7 @@ def main():
             data = extract_lyrics.get_lyrics(val)
             with open("learning_profiles/hiphoplyrics.txt", "a") as myfile:
                 myfile.write(data["lyrics"])
-        build_model(path="learning_profiles/hiphoplyrics.txt", write=True) 
+        build_model_path(path="learning_profiles/hiphoplyrics.txt", write=True)
     elif get_lyrics:
         extract_lyrics = SongLyrics("AIzaSyDqKiRUEY58zJ6rXIGb9vo7NY6G1vuNf90", "13133a888d06ff0f6")
         val = input("Enter a song: ")
@@ -177,7 +202,7 @@ def main():
 
         start = round(time.time() * 1000)
         profile = build_model(s["lyrics"])
-        own_results = calculate(new_profile=profile)
+        own_results = calculate(new_profile=profile, word_ngrams=True)
         end = round(time.time() * 1000)
         own_elapsed = end - start
 
@@ -199,24 +224,34 @@ def main():
             results_time.write(r"Pesem & Lastna impl. & T2E & \\\hline" + "\n")
 
         for s in test_data["lyrics"]:
+            # T2E TEST
             start = round(time.time() * 1000)
             t2e_results = text2emotion(s["path"])
             end = round(time.time() * 1000)
             t2e_elapsed = end - start
 
+            # WORD NGRAM TEST
             start = round(time.time() * 1000)
             profile = build_model_path(s["path"])
-            own_results = calculate(new_profile=profile)
+            own_results_w = calculate(new_profile=profile, word_ngrams=True)
             end = round(time.time() * 1000)
-            own_elapsed = end - start
+            own_elapsed_w = end - start
+
+            # CHARACTER NGRAM TEST
+            start = round(time.time() * 1000)
+            profile = build_model_path(s["path"])
+            own_results_c = calculate(new_profile=profile, word_ngrams=False)
+            end = round(time.time() * 1000)
+            own_elapsed_c = end - start
 
             print("\n" + s["artist"] + " - " + s["title"])
-            print("Own value: " + str(own_results) + " in " + str(own_elapsed) + " ms")
+            print("Word ngram value: " + str(own_results_w) + "% in " + str(own_elapsed_w) + " ms")
+            print("Character ngram value: " + str(own_results_c) + "% in " + str(own_elapsed_c) + " ms")
             print("T2E value: " + str(t2e_results["Angry"]) + " in " + str(t2e_elapsed) + " ms")
 
             if write:
-                results.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_results) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
-                results_time.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_elapsed) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
+                results.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_results_w) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
+                results_time.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_elapsed_w) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
 
         if write:
             results.close()

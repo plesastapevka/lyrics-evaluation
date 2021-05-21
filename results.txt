@@ -1,10 +1,10 @@
 Pesem & Lastna impl. & T2E \\\hline
-Eminem\\Kim & 308460 & 0.08\\\hline
-J. Cole\\Middle Child & 328353 & 0.12\\\hline
-Kid Cudi\\Day 'n' Nite & 343726 & 0.02\\\hline
-Melvoni\\No Man's Land & 336202 & 0.08\\\hline
-Mobb Deep\\Shook Ones, Part II & 312892 & 0.11\\\hline
-Juice WRLD\\Lucid Dreams & 341131 & 0.05\\\hline
-Travis Scott\\goosebumps & 335168 & 0.06\\\hline
-Guns 'N' Roses\\Sweet Child O' Mine & 349691 & 0.05\\\hline
-Passenger\\Let Her Go & 349688 & 0.01\\\hline
+Eminem\\Kim & 18.33 & 0.08\\\hline
+J. Cole\\Middle Child & 8.49 & 0.12\\\hline
+Kid Cudi\\Day 'n' Nite & 4.52 & 0.02\\\hline
+Melvoni\\No Man's Land & 6.45 & 0.08\\\hline
+Mobb Deep\\Shook Ones, Part II & 17.58 & 0.11\\\hline
+Juice WRLD\\Lucid Dreams & 5.42 & 0.05\\\hline
+Travis Scott\\goosebumps & 6.69 & 0.06\\\hline
+Guns 'N' Roses\\Sweet Child O' Mine & 2.95 & 0.05\\\hline
+Passenger\\Let Her Go & 2.85 & 0.01\\\hline
