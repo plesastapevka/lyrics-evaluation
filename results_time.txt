@@ -1,10 +1,21 @@
 Pesem & Lastna impl. & T2E & \\\hline
-Eminem\\Kim & 17 & 6042\\\hline
-J. Cole\\Middle Child & 15 & 3074\\\hline
-Kid Cudi\\Day 'n' Nite & 11 & 2428\\\hline
-Melvoni\\No Man's Land & 12 & 2968\\\hline
-Mobb Deep\\Shook Ones, Part II & 15 & 3460\\\hline
-Juice WRLD\\Lucid Dreams & 10 & 2297\\\hline
-Travis Scott\\goosebumps & 11 & 2497\\\hline
-Guns 'N' Roses\\Sweet Child O' Mine & 6 & 1251\\\hline
-Passenger\\Let Her Go & 7 & 1718\\\hline
+Eminem\\Kim & 31 & 6430\\\hline
+J. Cole\\Middle Child & 14 & 3926\\\hline
+Kid Cudi\\Day 'n' Nite & 14 & 3030\\\hline
+Melvoni\\No Man's Land & 13 & 3535\\\hline
+Mobb Deep\\Shook Ones, Part II & 16 & 4065\\\hline
+Juice WRLD\\Lucid Dreams & 14 & 2873\\\hline
+Travis Scott\\goosebumps & 12 & 3028\\\hline
+Lil Uzi Vert\\Sanguine Paradise & 18 & 3824\\\hline
+Chief Keef\\Love Sosa & 24 & 3916\\\hline
+Migos\\Bad and Boujee & 22 & 7496\\\hline
+Juice WRLD ft. Future\\Realer n Realer & 15 & 3076\\\hline
+Tupac Shakur\\Hail Mary & 16 & 4987\\\hline
+Kendrick Lamar\\DNA & 19 & 3277\\\hline
+Kendrick Lamar\\m.A.A.d city & 22 & 6282\\\hline
+Doja Cat\\Rules & 11 & 3093\\\hline
+Frank Ocean\\Lost & 7 & 1401\\\hline
+Young Thug\\Bad Bad Bad & 12 & 3059\\\hline
+N.W.A.\\Straight Outta Compton & 13 & 2915\\\hline
+Guns 'N' Roses\\Sweet Child O' Mine & 6 & 1188\\\hline
+Passenger\\Let Her Go & 8 & 1590\\\hline

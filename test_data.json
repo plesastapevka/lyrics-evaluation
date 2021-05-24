@@ -36,6 +36,61 @@
       "path": "test_lyrics/travis_scott_goosebumps.txt"
     },
     {
+      "artist": "Lil Uzi Vert",
+      "title": "Sanguine Paradise",
+      "path": "test_lyrics/uzi_sanguine.txt"
+    },
+    {
+      "artist": "Chief Keef",
+      "title": "Love Sosa",
+      "path": "test_lyrics/chief_keef_love_sosa.txt"
+    },
+    {
+      "artist": "Migos",
+      "title": "Bad and Boujee",
+      "path": "test_lyrics/migos_bad_boujee.txt"
+    },
+    {
+      "artist": "Juice WRLD ft. Future",
+      "title": "Realer n Realer",
+      "path": "test_lyrics/juice_future_realer.txt"
+    },
+    {
+      "artist": "Tupac Shakur",
+      "title": "Hail Mary",
+      "path": "test_lyrics/tupac_hail_mary.txt"
+    },
+    {
+      "artist": "Kendrick Lamar",
+      "title": "DNA",
+      "path": "test_lyrics/kendrick_dna.txt"
+    },
+    {
+      "artist": "Kendrick Lamar",
+      "title": "m.A.A.d city",
+      "path": "test_lyrics/kendrick_maad_city.txt"
+    },
+    {
+      "artist": "Doja Cat",
+      "title": "Rules",
+      "path": "test_lyrics/doja_rules.txt"
+    },
+    {
+      "artist": "Frank Ocean",
+      "title": "Lost",
+      "path": "test_lyrics/frank_ocean_lost.txt"
+    },
+    {
+      "artist": "Young Thug",
+      "title": "Bad Bad Bad",
+      "path": "test_lyrics/thugger_bad.txt"
+    },
+    {
+      "artist": "N.W.A.",
+      "title": "Straight Outta Compton",
+      "path": "test_lyrics/nwa_soc.txt"
+    },
+    {
       "artist": "Guns 'N' Roses",
       "title": "Sweet Child O' Mine",
       "path": "test_lyrics/gnr_sweet_child.txt"

@@ -1,0 +1,21 @@
+Pesem & Vrednost \\\hline
+Eminem\\Kim & 18.33\\\hline
+Mobb Deep\\Shook Ones, Part II & 17.58\\\hline
+N.W.A.\\Straight Outta Compton & 12.01\\\hline
+Tupac Shakur\\Hail Mary & 9.32\\\hline
+Kendrick Lamar\\m.A.A.d city & 9.13\\\hline
+J. Cole\\Middle Child & 8.49\\\hline
+Migos\\Bad and Boujee & 7.9\\\hline
+Young Thug\\Bad Bad Bad & 7.78\\\hline
+Lil Uzi Vert\\Sanguine Paradise & 7.72\\\hline
+Juice WRLD ft. Future\\Realer n Realer & 7.26\\\hline
+Kendrick Lamar\\DNA & 7.08\\\hline
+Chief Keef\\Love Sosa & 6.88\\\hline
+Travis Scott\\goosebumps & 6.69\\\hline
+Melvoni\\No Man's Land & 6.45\\\hline
+Doja Cat\\Rules & 6.28\\\hline
+Juice WRLD\\Lucid Dreams & 5.42\\\hline
+Frank Ocean\\Lost & 5.37\\\hline
+Kid Cudi\\Day 'n' Nite & 4.52\\\hline
+Guns 'N' Roses\\Sweet Child O' Mine & 2.95\\\hline
+Passenger\\Let Her Go & 2.85\\\hline

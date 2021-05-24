@@ -178,6 +178,38 @@ def text2emotion_data(data):
     return t2e.calculate_emotion(data)
 
 
+def write_results(finals):
+    results_w_ngram = open("word_ngram.txt", "w")
+    results_c_ngram = open("char_ngram.txt", "w")
+    results_t2e = open("t2e.txt", "w")
+
+    results_w_ngram.write(r"Pesem & Vrednost \\\hline" + "\n")
+    results_c_ngram.write(r"Pesem & Vrednost \\\hline" + "\n")
+    results_t2e.write(r"Pesem & Vrednost v % \\\hline" + "\n")
+
+    # Results based on word ngram value
+    finals.sort(key=lambda e: e["word_ngram"]["value"], reverse=True)
+    for r in finals:
+        results_w_ngram.write(
+            r["artist"] + r"\\" + r["title"] + " & " + str(r["word_ngram"]["value"]) + r"\\\hline" + "\n")
+
+    # Results based on char ngram value
+    finals.sort(key=lambda e: e["char_ngram"]["value"], reverse=True)
+    for r in finals:
+        results_c_ngram.write(
+            r["artist"] + r"\\" + r["title"] + " & " + str(r["char_ngram"]["value"]) + r"\\\hline" + "\n")
+
+    # Results based on t2e value
+    finals.sort(key=lambda e: e["t2e"]["value"], reverse=True)
+    for r in finals:
+        results_t2e.write(
+            r["artist"] + r"\\" + r["title"] + " & " + str(r["t2e"]["value"]) + r"\\\hline" + "\n")
+
+    results_w_ngram.close()
+    results_c_ngram.close()
+    results_t2e.close()
+
+
 def main():
     create_model = False
     get_lyrics = False
@@ -223,11 +255,14 @@ def main():
             results.write(r"Pesem & Lastna impl. & T2E \\\hline" + "\n")
             results_time.write(r"Pesem & Lastna impl. & T2E & \\\hline" + "\n")
 
+        finals = []
         for s in test_data["lyrics"]:
             # T2E TEST
             start = round(time.time() * 1000)
             t2e_results = text2emotion(s["path"])
+            # t2e_results = {"Angry": 0}
             end = round(time.time() * 1000)
+            t2e_results["Angry"] = round(t2e_results["Angry"] * 100, 2)
             t2e_elapsed = end - start
 
             # WORD NGRAM TEST
@@ -249,6 +284,25 @@ def main():
             print("Character ngram value: " + str(own_results_c) + "% in " + str(own_elapsed_c) + " ms")
             print("T2E value: " + str(t2e_results["Angry"]) + " in " + str(t2e_elapsed) + " ms")
 
+            final_struct = {
+                "artist": s["artist"],
+                "title": s["title"],
+                "word_ngram": {
+                    "time": own_elapsed_w,
+                    "value": own_results_w
+                },
+                "char_ngram": {
+                    "time": own_elapsed_c,
+                    "value": own_results_c
+                },
+                "t2e": {
+                    "time": t2e_elapsed,
+                    "value": t2e_results["Angry"]
+                }
+            }
+
+            finals.append(final_struct)
+
             if write:
                 results.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_results_w) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
                 results_time.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_elapsed_w) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
@@ -256,6 +310,7 @@ def main():
         if write:
             results.close()
             results_time.close()
+            write_results(finals)
 
 
 if __name__ == "__main__":
