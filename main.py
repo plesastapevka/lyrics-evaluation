@@ -191,19 +191,19 @@ def write_results(finals):
     finals.sort(key=lambda e: e["word_ngram"]["value"], reverse=True)
     for r in finals:
         results_w_ngram.write(
-            r["artist"] + r"\\" + r["title"] + " & " + str(r["word_ngram"]["value"]) + r"\\\hline" + "\n")
+            r["title"] + " & " + str(r["word_ngram"]["value"]) + r"\\\hline" + "\n")
 
     # Results based on char ngram value
     finals.sort(key=lambda e: e["char_ngram"]["value"], reverse=True)
     for r in finals:
         results_c_ngram.write(
-            r["artist"] + r"\\" + r["title"] + " & " + str(r["char_ngram"]["value"]) + r"\\\hline" + "\n")
+            r["title"] + " & " + str(r["char_ngram"]["value"]) + r"\\\hline" + "\n")
 
     # Results based on t2e value
     finals.sort(key=lambda e: e["t2e"]["value"], reverse=True)
     for r in finals:
         results_t2e.write(
-            r["artist"] + r"\\" + r["title"] + " & " + str(r["t2e"]["value"]) + r"\\\hline" + "\n")
+            r["title"] + " & " + str(r["t2e"]["value"]) + r"\\\hline" + "\n")
 
     results_w_ngram.close()
     results_c_ngram.close()
@@ -253,7 +253,7 @@ def main():
             results_time = open("results_time.txt", "w")
 
             results.write(r"Pesem & Lastna impl. & T2E \\\hline" + "\n")
-            results_time.write(r"Pesem & Lastna impl. & T2E & \\\hline" + "\n")
+            results_time.write(r"Pesem & Lastna impl. & T2E \\\hline" + "\n")
 
         finals = []
         for s in test_data["lyrics"]:
@@ -304,8 +304,10 @@ def main():
             finals.append(final_struct)
 
             if write:
-                results.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_results_w) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
-                results_time.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_elapsed_w) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
+                # results.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_results_w) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
+                results.write(s["title"] + " & " + str(own_results_w) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
+                # results_time.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_elapsed_w) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
+                results_time.write(s["title"] + " & " + str(own_elapsed_w) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
 
         if write:
             results.close()

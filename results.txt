@@ -1,21 +1,21 @@
 Pesem & Lastna impl. & T2E \\\hline
-Eminem\\Kim & 18.33 & 8.0\\\hline
-J. Cole\\Middle Child & 8.49 & 12.0\\\hline
-Kid Cudi\\Day 'n' Nite & 4.52 & 2.0\\\hline
-Melvoni\\No Man's Land & 6.45 & 8.0\\\hline
-Mobb Deep\\Shook Ones, Part II & 17.58 & 11.0\\\hline
-Juice WRLD\\Lucid Dreams & 5.42 & 5.0\\\hline
-Travis Scott\\goosebumps & 6.69 & 6.0\\\hline
-Lil Uzi Vert\\Sanguine Paradise & 7.72 & 7.0\\\hline
-Chief Keef\\Love Sosa & 6.88 & 9.0\\\hline
-Migos\\Bad and Boujee & 7.9 & 4.0\\\hline
-Juice WRLD ft. Future\\Realer n Realer & 7.26 & 10.0\\\hline
-Tupac Shakur\\Hail Mary & 9.32 & 13.0\\\hline
-Kendrick Lamar\\DNA & 7.08 & 14.0\\\hline
-Kendrick Lamar\\m.A.A.d city & 9.13 & 11.0\\\hline
-Doja Cat\\Rules & 6.28 & 14.0\\\hline
-Frank Ocean\\Lost & 5.37 & 3.0\\\hline
-Young Thug\\Bad Bad Bad & 7.78 & 6.0\\\hline
-N.W.A.\\Straight Outta Compton & 12.01 & 9.0\\\hline
-Guns 'N' Roses\\Sweet Child O' Mine & 2.95 & 5.0\\\hline
-Passenger\\Let Her Go & 2.85 & 1.0\\\hline
+Kim & 18.33 & 8.0\\\hline
+Middle Child & 8.49 & 12.0\\\hline
+Day 'n' Nite & 4.52 & 2.0\\\hline
+No Man's Land & 6.45 & 8.0\\\hline
+Shook Ones, Part II & 17.58 & 11.0\\\hline
+Lucid Dreams & 5.42 & 5.0\\\hline
+goosebumps & 6.69 & 6.0\\\hline
+Sanguine Paradise & 7.72 & 7.0\\\hline
+Love Sosa & 6.88 & 9.0\\\hline
+Bad and Boujee & 7.9 & 4.0\\\hline
+Realer n Realer & 7.26 & 10.0\\\hline
+Hail Mary & 9.32 & 13.0\\\hline
+DNA & 7.08 & 14.0\\\hline
+m.A.A.d city & 9.13 & 11.0\\\hline
+Rules & 6.28 & 14.0\\\hline
+Lost & 5.37 & 3.0\\\hline
+Bad Bad Bad & 7.78 & 6.0\\\hline
+Straight Outta Compton & 12.01 & 9.0\\\hline
+Sweet Child O' Mine & 2.95 & 5.0\\\hline
+Let Her Go & 2.85 & 1.0\\\hline

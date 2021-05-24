@@ -1,21 +1,21 @@
 Pesem & Vrednost v % \\\hline
-Kendrick Lamar\\DNA & 14.0\\\hline
-Doja Cat\\Rules & 14.0\\\hline
-Tupac Shakur\\Hail Mary & 13.0\\\hline
-J. Cole\\Middle Child & 12.0\\\hline
-Kendrick Lamar\\m.A.A.d city & 11.0\\\hline
-Mobb Deep\\Shook Ones, Part II & 11.0\\\hline
-Juice WRLD ft. Future\\Realer n Realer & 10.0\\\hline
-N.W.A.\\Straight Outta Compton & 9.0\\\hline
-Chief Keef\\Love Sosa & 9.0\\\hline
-Eminem\\Kim & 8.0\\\hline
-Melvoni\\No Man's Land & 8.0\\\hline
-Lil Uzi Vert\\Sanguine Paradise & 7.0\\\hline
-Young Thug\\Bad Bad Bad & 6.0\\\hline
-Travis Scott\\goosebumps & 6.0\\\hline
-Juice WRLD\\Lucid Dreams & 5.0\\\hline
-Guns 'N' Roses\\Sweet Child O' Mine & 5.0\\\hline
-Migos\\Bad and Boujee & 4.0\\\hline
-Frank Ocean\\Lost & 3.0\\\hline
-Kid Cudi\\Day 'n' Nite & 2.0\\\hline
-Passenger\\Let Her Go & 1.0\\\hline
+DNA & 14.0\\\hline
+Rules & 14.0\\\hline
+Hail Mary & 13.0\\\hline
+Middle Child & 12.0\\\hline
+m.A.A.d city & 11.0\\\hline
+Shook Ones, Part II & 11.0\\\hline
+Realer n Realer & 10.0\\\hline
+Straight Outta Compton & 9.0\\\hline
+Love Sosa & 9.0\\\hline
+Kim & 8.0\\\hline
+No Man's Land & 8.0\\\hline
+Sanguine Paradise & 7.0\\\hline
+Bad Bad Bad & 6.0\\\hline
+goosebumps & 6.0\\\hline
+Lucid Dreams & 5.0\\\hline
+Sweet Child O' Mine & 5.0\\\hline
+Bad and Boujee & 4.0\\\hline
+Lost & 3.0\\\hline
+Day 'n' Nite & 2.0\\\hline
+Let Her Go & 1.0\\\hline
