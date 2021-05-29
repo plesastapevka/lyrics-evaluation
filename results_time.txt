@@ -1,21 +1,21 @@
-Pesem & Lastna impl. & T2E \\\hline
-Kim & 15 & 7344\\\hline
-Middle Child & 14 & 4968\\\hline
-Day 'n' Nite & 11 & 3141\\\hline
-No Man's Land & 20 & 3948\\\hline
-Shook Ones, Part II & 19 & 3982\\\hline
-Lucid Dreams & 15 & 3364\\\hline
-goosebumps & 12 & 2912\\\hline
-Sanguine Paradise & 22 & 4235\\\hline
-Love Sosa & 13 & 3771\\\hline
-Bad and Boujee & 26 & 7609\\\hline
-Realer n Realer & 12 & 3624\\\hline
-Hail Mary & 30 & 6124\\\hline
-DNA & 23 & 5106\\\hline
-m.A.A.d city & 19 & 5450\\\hline
-Rules & 17 & 2993\\\hline
-Lost & 8 & 1782\\\hline
-Bad Bad Bad & 13 & 3224\\\hline
-Straight Outta Compton & 20 & 3809\\\hline
-Sweet Child O' Mine & 8 & 1951\\\hline
-Let Her Go & 7 & 2173\\\hline
+Pesmi & Besedni n-gram & Znakovni n-gram T2E \\\hline
+Kim & 16 & 15 & 5823\\\hline
+Middle Child & 14 & 11 & 3156\\\hline
+Day 'n' Nite & 10 & 9 & 2521\\\hline
+No Man's Land & 12 & 10 & 2931\\\hline
+Shook Ones, Part II & 15 & 12 & 3397\\\hline
+Lucid Dreams & 10 & 9 & 2260\\\hline
+goosebumps & 15 & 13 & 2523\\\hline
+Sanguine Paradise & 14 & 12 & 4006\\\hline
+Love Sosa & 13 & 11 & 3125\\\hline
+Bad and Boujee & 22 & 20 & 6393\\\hline
+Realer n Realer & 13 & 11 & 3276\\\hline
+Hail Mary & 15 & 14 & 4917\\\hline
+DNA & 14 & 11 & 3072\\\hline
+m.A.A.d city & 19 & 15 & 4651\\\hline
+Rules & 11 & 10 & 2705\\\hline
+Lost & 8 & 9 & 1341\\\hline
+Bad Bad Bad & 12 & 11 & 2889\\\hline
+Straight Outta Compton & 13 & 10 & 2896\\\hline
+Sweet Child O' Mine & 5 & 7 & 1203\\\hline
+Let Her Go & 7 & 7 & 1646\\\hline

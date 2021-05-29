@@ -3,6 +3,8 @@ import re
 import json
 import t2e
 import time
+
+
 # from lyrics_extractor import SongLyrics
 
 
@@ -34,7 +36,7 @@ def build_model_path(path, write=False):
     except IOError:
         print("File does not exist")
         exit(1)
-    
+
     infile.close()
     return build_model(data, write=write)
 
@@ -96,8 +98,8 @@ def build_model(data, write=False):
 
 
 def ngrams(s, n=2, i=0):
-    while len(s[i:i+n]) == n:
-        ret_val = s[i:i+n]
+    while len(s[i:i + n]) == n:
+        ret_val = s[i:i + n]
         yield " ".join(ret_val)
         i += 1
 
@@ -252,8 +254,8 @@ def main():
             results = open("results.txt", "w")
             results_time = open("results_time.txt", "w")
 
-            results.write(r"Pesem & Lastna impl. & T2E \\\hline" + "\n")
-            results_time.write(r"Pesem & Lastna impl. & T2E \\\hline" + "\n")
+            results.write(r"Pesem & Besedni & Znakovni & T2E \\\hline" + "\n")
+            results_time.write(r"Pesmi & Besedni & Znakovni & T2E \\\hline" + "\n")
 
         finals = []
         for s in test_data["lyrics"]:
@@ -304,10 +306,10 @@ def main():
             finals.append(final_struct)
 
             if write:
-                # results.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_results_w) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
-                results.write(s["title"] + " & " + str(own_results_w) + " & " + str(t2e_results["Angry"]) + r"\\\hline" + "\n")
-                # results_time.write(s["artist"] + r"\\" + s["title"] + " & " + str(own_elapsed_w) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
-                results_time.write(s["title"] + " & " + str(own_elapsed_w) + " & " + str(t2e_elapsed) + r"\\\hline" + "\n")
+                results.write(s["title"] + " & " + str(own_results_w) + " & " + str(own_results_c) + " & " + str(
+                    t2e_results["Angry"]) + r"\\\hline" + "\n")
+                results_time.write(s["title"] + " & " + str(own_elapsed_w) + " & " + str(own_elapsed_c) + " & " + str(
+                    t2e_elapsed) + r"\\\hline" + "\n")
 
         if write:
             results.close()
@@ -316,5 +318,4 @@ def main():
 
 
 if __name__ == "__main__":
-    
     main()
